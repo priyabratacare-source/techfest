@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login | TTK TECHFEST 2026</title>
+<meta name="description" content="Secure admin access for TTK TechFest 2026 management. Approved accounts only.">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --black:#05070d;
+    --dark:#080d17;
+    --blue:#1677ff;
+    --cyan:#00d9ff;
+    --white:#ffffff;
+    --grey:#a3adbd;
+    --codebihin:#ff6b35;
+    --card-bg:#0c1524;
+    --input-bg:#0a1220;
+    --input-border:#1c2a3b;
+    --error:#ff4757;
+    --success:#2ed573;
+    --warning:#ffa502;
+    --google:#4285F4;
+}
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html {
+    scroll-behavior:smooth;
+}
+
+body {
+    background:var(--black);
+    color:var(--white);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+    min-height:100vh;
+}
+
+a {
+    color:inherit;
+    text-decoration:none;
+}
+
+/* ============================================
+   BACKGROUND EFFECTS
+   ============================================ */
+
+.bg-grid {
+    position:fixed;
+    inset:0;
+    background-image:
+    linear-gradient(rgba(0,217,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,217,255,.04) 1px,transparent 1px);
+    background-size:60px 60px;
+    z-index:0;
+    pointer-events:none;
+    mask-image:radial-gradient(circle at center,black 20%,transparent 75%);
+    animation:gridPulse 5s ease-in-out infinite;
+}
+
+@keyframes gridPulse {
+    0%,100% { opacity:.5; }
+    50% { opacity:1; }
+}
+
+.bg-glow {
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(0,217,255,.08),transparent 70%);
+    z-index:0;
+    pointer-events:none;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    animation:glowPulse 6s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%,100% { transform:translate(-50%,-50%) scale(1); opacity:.6; }
+    50% { transform:translate(-50%,-50%) scale(1.3); opacity:1; }
+}
+
+.bg-scanline {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,217,255,.01) 2px,
+        rgba(0,217,255,.01) 4px
+    );
+    z-index:1;
+    pointer-events:none;
+}
+
+/* ============================================
+   LOGIN CONTAINER
+   ============================================ */
+
+.login-container {
+    position:relative;
+    z-index:2;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+}
+
+.login-card {
+    width:100%;
+    max-width:440px;
+    background:rgba(12,21,36,.85);
+    backdrop-filter:blur(20px);
+    border:1px solid #1c2a3b;
+    padding:50px 44px 44px;
+    position:relative;
+    animation:cardFadeIn .8s cubic-bezier(.16,1,.3,1);
+    box-shadow:0 30px 80px rgba(0,0,0,.5);
+}
+
+@keyframes cardFadeIn {
+    from {
+        opacity:0;
+        transform:translateY(30px) scale(.98);
+    }
+    to {
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.login-card::before {
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:2px;
+    background:linear-gradient(90deg,transparent,var(--cyan),transparent);
+}
+
+.login-card::after {
+    content:'';
+    position:absolute;
+    top:8px;
+    right:8px;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--cyan);
+    box-shadow:0 0 10px var(--cyan);
+    animation:dotBlink 2s infinite;
+}
+
+@keyframes dotBlink {
+    0%,100% { opacity:1; }
+    50% { opacity:.3; }
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.login-header {
+    text-align:center;
+    margin-bottom:36px;
+}
+
+.login-brand {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    margin-bottom:24px;
+}
+
+.login-brand-mark {
+    width:48px;
+    height:48px;
+    border:1px solid var(--cyan);
+    display:grid;
+    place-items:center;
+    font-family:'Orbitron';
+    font-size:24px;
+    font-weight:900;
+    color:var(--cyan);
+    transform:skew(-8deg);
+    position:relative;
+    overflow:hidden;
+}
+
+.login-brand-mark::before {
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(90deg,transparent,rgba(0,217,255,.3),transparent);
+    animation:shine 3s infinite;
+}
+
+@keyframes shine {
+    to { left:100%; }
+}
+
+.login-brand-text {
+    font-family:'Orbitron';
+    font-size:18px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.login-brand-text span {
+    color:var(--cyan);
+}
+
+.login-badge {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 18px;
+    border:1px solid rgba(255,165,2,.3);
+    background:rgba(255,165,2,.06);
+    color:var(--warning);
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:18px;
+}
+
+.login-badge::before {
+    content:'';
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--warning);
+    box-shadow:0 0 8px var(--warning);
+    animation:dotBlink 1.5s infinite;
+}
+
+.login-header h1 {
+    font-family:'Orbitron';
+    font-size:26px;
+    font-weight:800;
+    letter-spacing:-.5px;
+    line-height:1.2;
+}
+
+.login-header p {
+    color:#7a889c;
+    font-size:12px;
+    margin-top:10px;
+    line-height:1.6;
+    letter-spacing:.5px;
+}
+
+/* ============================================
+   APPROVED-ONLY NOTICE
+   ============================================ */
+
+.access-notice {
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:16px 18px;
+    background:rgba(255,165,2,.05);
+    border:1px solid rgba(255,165,2,.2);
+    border-left:3px solid var(--warning);
+    margin-bottom:26px;
+}
+
+.access-notice-icon {
+    font-size:16px;
+    color:var(--warning);
+    flex-shrink:0;
+    margin-top:1px;
+}
+
+.access-notice-text {
+    font-size:11px;
+    color:#c0cad9;
+    line-height:1.7;
+    letter-spacing:.3px;
+}
+
+.access-notice-text strong {
+    color:var(--warning);
+    font-weight:700;
+}
+
+/* ============================================
+   FORM
+   ============================================ */
+
+.login-form {
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.form-group {
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    position:relative;
+}
+
+.form-group label {
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#c0cad9;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.form-group label .label-icon {
+    color:var(--cyan);
+    font-size:12px;
+}
+
+.input-wrapper {
+    position:relative;
+    display:flex;
+    align-items:center;
+}
+
+.input-wrapper .input-icon {
+    position:absolute;
+    left:16px;
+    color:#4a5a70;
+    font-size:15px;
+    pointer-events:none;
+    transition:.3s;
+    z-index:2;
+}
+
+.form-group input {
+    background:var(--input-bg);
+    border:1px solid var(--input-border);
+    color:var(--white);
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    padding:16px 16px 16px 46px;
+    outline:none;
+    transition:.3s;
+    width:100%;
+    border-radius:2px;
+}
+
+.form-group input::placeholder {
+    color:#3a4a60;
+    font-size:13px;
+}
+
+.form-group input:focus {
+    border-color:var(--cyan);
+    box-shadow:0 0 0 3px rgba(0,217,255,.08);
+    background:#0c1626;
+}
+
+.form-group input.error {
+    border-color:var(--error);
+    box-shadow:0 0 0 3px rgba(255,71,87,.08);
+}
+
+/* Password toggle */
+.password-toggle {
+    position:absolute;
+    right:14px;
+    background:none;
+    border:none;
+    color:#4a5a70;
+    cursor:pointer;
+    padding:6px;
+    display:grid;
+    place-items:center;
+    transition:.3s;
+    font-size:16px;
+    z-index:2;
+}
+
+.password-toggle:hover {
+    color:var(--cyan);
+}
+
+/* Error messages */
+.error-msg {
+    color:var(--error);
+    font-size:10px;
+    letter-spacing:.5px;
+    display:none;
+    margin-top:2px;
+    align-items:center;
+    gap:6px;
+}
+
+.error-msg::before {
+    content:'⚠';
+    font-size:11px;
+}
+
+.error-msg.visible {
+    display:flex;
+}
+
+/* ============================================
+   FORM OPTIONS
+   ============================================ */
+
+.form-options {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.remember-group {
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.remember-group input[type="checkbox"] {
+    width:18px;
+    height:18px;
+    accent-color:var(--cyan);
+    cursor:pointer;
+    flex-shrink:0;
+}
+
+.remember-group label {
+    font-size:11px;
+    color:#9aa9bd;
+    cursor:pointer;
+    letter-spacing:.3px;
+    font-weight:400;
+}
+
+.forgot-link {
+    font-size:11px;
+    color:var(--cyan);
+    font-weight:600;
+    transition:.3s;
+    letter-spacing:.3px;
+}
+
+.forgot-link:hover {
+    text-shadow:0 0 15px rgba(0,217,255,.5);
+    text-decoration:underline;
+    text-underline-offset:3px;
+}
+
+/* ============================================
+   LOGIN BUTTON
+   ============================================ */
+
+.btn-login {
+    padding:18px 30px;
+    background:linear-gradient(135deg,var(--cyan),#1677ff);
+    color:#03101b;
+    font-family:'Orbitron';
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    border:none;
+    cursor:pointer;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+    clip-path:polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin-top:6px;
+}
+
+.btn-login::before {
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
+    transition:.6s;
+}
+
+.btn-login:hover::before {
+    left:100%;
+}
+
+.btn-login:hover {
+    transform:translateY(-3px);
+    box-shadow:0 15px 40px rgba(0,217,255,.3);
+}
+
+.btn-login:active {
+    transform:translateY(-1px);
+}
+
+.btn-login:disabled {
+    opacity:.7;
+    cursor:not-allowed;
+    transform:none;
+}
+
+/* Loading spinner */
+.spinner {
+    width:16px;
+    height:16px;
+    border:2px solid rgba(3,16,27,.3);
+    border-top-color:#03101b;
+    border-radius:50%;
+    animation:spin .6s linear infinite;
+    display:none;
+}
+
+.btn-login.loading .spinner {
+    display:block;
+}
+
+.btn-login.loading .btn-text {
+    opacity:.6;
+}
+
+@keyframes spin {
+    to { transform:rotate(360deg); }
+}
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+
+.divider {
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin:26px 0 22px;
+}
+
+.divider::before,
+.divider::after {
+    content:'';
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg,transparent,#1c2a3b,transparent);
+}
+
+.divider span {
+    font-size:9px;
+    color:#3a4a60;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+/* ============================================
+   GOOGLE SIGN-IN
+   ============================================ */
+
+.btn-google {
+    width:100%;
+    padding:16px 24px;
+    background:#ffffff;
+    color:#1f1f1f;
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.3px;
+    border:1px solid #dadce0;
+    cursor:pointer;
+    transition:.3s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    border-radius:2px;
+    position:relative;
+    overflow:hidden;
+}
+
+.btn-google:hover {
+    background:#f8f9fa;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+    transform:translateY(-2px);
+}
+
+.btn-google:active {
+    transform:translateY(0);
+}
+
+.btn-google svg {
+    width:18px;
+    height:18px;
+    flex-shrink:0;
+}
+
+.btn-google .google-text {
+    font-weight:600;
+}
+
+.google-note {
+    text-align:center;
+    font-size:10px;
+    color:#5a6a80;
+    margin-top:12px;
+    letter-spacing:.3px;
+    line-height:1.6;
+}
+
+.google-note strong {
+    color:#9aa9bd;
+    font-weight:600;
+}
+
+/* ============================================
+   SECURITY NOTICE
+   ============================================ */
+
+.security-notice {
+    margin-top:28px;
+    padding-top:20px;
+    border-top:1px solid #162233;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.security-notice span {
+    font-size:9px;
+    color:#3a4a60;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.security-notice span::before {
+    content:'🔒';
+    font-size:10px;
+}
+
+/* ============================================
+   BACK LINK
+   ============================================ */
+
+.back-home {
+    display:flex;
+    align-items:center;
+    gap:8px;
+    justify-content:center;
+    margin-top:28px;
+    font-size:11px;
+    color:#5a6a80;
+    transition:.3s;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    font-weight:600;
+}
+
+.back-home:hover {
+    color:var(--cyan);
+}
+
+/* ============================================
+   TOAST NOTIFICATION
+   ============================================ */
+
+.toast {
+    position:fixed;
+    top:30px;
+    left:50%;
+    transform:translateX(-50%) translateY(-100px);
+    background:rgba(12,21,36,.95);
+    backdrop-filter:blur(15px);
+    border:1px solid var(--error);
+    padding:16px 28px;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    transition:.4s cubic-bezier(.16,1,.3,1);
+    box-shadow:0 10px 40px rgba(0,0,0,.5);
+    max-width:90vw;
+}
+
+.toast.show {
+    transform:translateX(-50%) translateY(0);
+}
+
+.toast.toast-success {
+    border-color:var(--success);
+}
+
+.toast-icon {
+    font-size:18px;
+    color:var(--error);
+    flex-shrink:0;
+}
+
+.toast.toast-success .toast-icon {
+    color:var(--success);
+}
+
+.toast-msg {
+    font-size:12px;
+    color:#e0e7f0;
+    letter-spacing:.3px;
+    line-height:1.5;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.admin-footer {
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding:30px 20px;
+    color:#3a4a60;
+    font-size:10px;
+    letter-spacing:1px;
+    line-height:1.8;
+}
+
+.admin-footer a {
+    color:var(--cyan);
+    transition:.3s;
+}
+
+.admin-footer a:hover {
+    text-shadow:0 0 10px rgba(0,217,255,.4);
+}
+
+/* ============================================
+   CODEBIHIN CREDIT
+   ============================================ */
+
+.codebihin-credit {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(5, 7, 13, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 10px 16px;
+    border-radius: 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #c0cad9;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.codebihin-credit:hover {
+    border-color: var(--codebihin);
+    color: #ffffff;
+    background: rgba(10, 15, 25, 0.95);
+    transform: translateY(-2px);
+}
+
+.codebihin-credit span {
+    font-weight: 800;
+    color: var(--codebihin);
+}
+
+.codebihin-credit small {
+    font-size: 9px;
+    opacity: 0.6;
+    font-weight: 400;
+    margin-left: 4px;
+}
+
+/* ============================================
+   CAPS LOCK WARNING
+   ============================================ */
+
+.caps-warning {
+    position:absolute;
+    right:0;
+    top:-24px;
+    font-size:9px;
+    color:var(--warning);
+    letter-spacing:1px;
+    display:none;
+    align-items:center;
+    gap:4px;
+    white-space:nowrap;
+}
+
+.caps-warning.visible {
+    display:flex;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media(max-width:500px) {
+    .login-card {
+        padding:40px 26px 34px;
+    }
+
+    .login-header h1 {
+        font-size:22px;
+    }
+
+    .login-brand-text {
+        font-size:15px;
+    }
+
+    .login-brand-mark {
+        width:40px;
+        height:40px;
+        font-size:20px;
+    }
+
+    .form-options {
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+    }
+
+    .codebihin-credit {
+        bottom: 16px;
+        right: 16px;
+        padding: 8px 12px;
+        font-size: 10px;
+    }
+
+    .toast {
+        top:20px;
+        padding:14px 20px;
+    }
+
+    .access-notice {
+        padding:14px 14px;
+    }
+
+    .access-notice-text {
+        font-size:10px;
+    }
+}
+
+@media(max-width:360px) {
+    .login-card {
+        padding:32px 20px 28px;
+    }
+
+    .login-header h1 {
+        font-size:19px;
+    }
+
+    .btn-google {
+        font-size:12px;
+        padding:14px 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background effects -->
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<div class="bg-scanline"></div>
+
+<!-- Toast notification -->
+<div class="toast" id="toast">
+    <span class="toast-icon" id="toastIcon">✕</span>
+    <span class="toast-msg" id="toastMsg"></span>
+</div>
+
+<!-- Login Container -->
+<div class="login-container">
+
+    <div class="login-card">
+
+        <!-- Header -->
+        <div class="login-header">
+
+            <div class="login-brand">
+                <div class="login-brand-mark">T</div>
+                <div class="login-brand-text">TTK<span>TECHFEST</span></div>
+            </div>
+
+            <div class="login-badge">Admin Access</div>
+
+            <h1>ADMINISTRATOR<br>LOGIN</h1>
+            <p>Authorized personnel only.<br>Sign in to access the control panel.</p>
+
+        </div>
+
+        <!-- Approved-only Notice -->
+        <div class="access-notice">
+            <span class="access-notice-icon">🔐</span>
+            <div class="access-notice-text">
+                <strong>Restricted access.</strong> Only approved administrator accounts can sign in. Access requests must be submitted to the festival organizing committee.
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form class="login-form" id="adminLoginForm" autocomplete="off">
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="adminEmail">
+                    <span class="label-icon">◈</span> Admin Email
+                </label>
+                <div class="input-wrapper">
+                    <span class="input-icon">✉</span>
+                    <input type="email" id="adminEmail" name="adminEmail" placeholder="admin@ttktechfest.com" required autocomplete="off" spellcheck="false">
+                </div>
+                <span class="error-msg" id="err-adminEmail">Please enter a valid email address</span>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="adminPass">
+                    <span class="label-icon">◈</span> Password
+                </label>
+                <div class="input-wrapper">
+                    <span class="input-icon">🔒</span>
+                    <input type="password" id="adminPass" name="adminPass" placeholder="Enter password" required autocomplete="off">
+                    <button type="button" class="password-toggle" id="togglePassword" aria-label="Show password">👁</button>
+                </div>
+                <div class="caps-warning" id="capsWarning">⚠ CAPS LOCK IS ON</div>
+                <span class="error-msg" id="err-adminPass">Please enter your password</span>
+            </div>
+
+            <!-- Options -->
+            <div class="form-options">
+                <div class="remember-group">
+                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                    <label for="rememberMe">Remember this device</label>
+                </div>
+                <a href="forgot-password.html" class="forgot-link">Forgot password?</a>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn-login" id="loginBtn">
+                <span class="spinner"></span>
+                <span class="btn-text">ACCESS CONTROL PANEL →</span>
+            </button>
+
+        </form>
+
+        <!-- Divider -->
+        <div class="divider">
+            <span>Or continue with</span>
+        </div>
+
+        <!-- Google Sign-In -->
+        <button type="button" class="btn-google" id="googleSignIn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            <span class="google-text">Sign in with Google</span>
+        </button>
+
+        <p class="google-note">
+            Your Google account must be <strong>pre-approved</strong> by the organizing committee.
+        </p>
+
+        <!-- Security Notice -->
+        <div class="security-notice">
+            <span>Secured with end-to-end encryption</span>
+        </div>
+
+        <!-- Back link -->
+        <a href="index.html" class="back-home">← Back to Main Site</a>
+
+    </div>
+
+</div>
+
+<!-- Footer -->
+<div class="admin-footer">
+    © 2026 TTK TECHFEST · ADMIN CONTROL PANEL · <a href="index.html">Home</a> · <a href="contact.html">Contact</a>
+</div>
+
+<!-- CODEBIHIN CREDIT -->
+<a href="https://codebihin.in" target="_blank" rel="noopener noreferrer" class="codebihin-credit" aria-label="Made by Codebihin">
+    <span>CODEBIHIN</span>
+    <small>MADE</small>
+</a>
+
+<script>
+
+/* ============================================
+   APPROVED ADMIN EMAILS
+   ————————————————————————————————————————————
+   Replace this list with the actual approved
+   administrator emails from the organizing
+   committee. In production, this validation
+   should happen on the server, not the client.
+   ============================================ */
+const APPROVED_ADMINS = [
+    'admin@ttktechfest.com',
+    'director@ttktechfest.com',
+    'coordinator@ttktechfest.com',
+    'tech@ttktechfest.com'
+];
+
+/* ============================================
+   ELEMENT REFERENCES
+   ============================================ */
+const form = document.getElementById('adminLoginForm');
+const adminEmail = document.getElementById('adminEmail');
+const adminPass = document.getElementById('adminPass');
+const loginBtn = document.getElementById('loginBtn');
+const togglePassword = document.getElementById('togglePassword');
+const capsWarning = document.getElementById('capsWarning');
+const googleBtn = document.getElementById('googleSignIn');
+const toast = document.getElementById('toast');
+const toastIcon = document.getElementById('toastIcon');
+const toastMsg = document.getElementById('toastMsg');
+
+/* ============================================
+   TOAST NOTIFICATION
+   ============================================ */
+let toastTimer = null;
+
+function showToast(message, isSuccess = false) {
+    toastMsg.textContent = message;
+    toastIcon.textContent = isSuccess ? '✓' : '✕';
+    toast.classList.toggle('toast-success', isSuccess);
+    toast.classList.add('show');
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+    }, 4000);
+}
+
+/* ============================================
+   ERROR HELPERS
+   ============================================ */
+function showError(fieldId, msgId) {
+    const field = document.getElementById(fieldId);
+    const msg = document.getElementById(msgId);
+    if (field) field.classList.add('error');
+    if (msg) msg.classList.add('visible');
+}
+
+function clearError(fieldId, msgId) {
+    const field = document.getElementById(fieldId);
+    const msg = document.getElementById(msgId);
+    if (field) field.classList.remove('error');
+    if (msg) msg.classList.remove('visible');
+}
+
+/* Real-time clearing */
+adminEmail.addEventListener('input', () => clearError('adminEmail', 'err-adminEmail'));
+adminPass.addEventListener('input', () => clearError('adminPass', 'err-adminPass'));
+
+/* ============================================
+   EMAIL VALIDATION
+   ============================================ */
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function isApprovedAdmin(email) {
+    return APPROVED_ADMINS.includes(email.toLowerCase().trim());
+}
+
+/* ============================================
+   PASSWORD VISIBILITY TOGGLE
+   ============================================ */
+togglePassword.addEventListener('click', () => {
+    const type = adminPass.type === 'password' ? 'text' : 'password';
+    adminPass.type = type;
+    togglePassword.textContent = type === 'password' ? '👁' : '🙈';
+    togglePassword.setAttribute('aria-label', type === 'password' ? 'Show password' : 'Hide password');
+});
+
+/* ============================================
+   CAPS LOCK DETECTION
+   ============================================ */
+adminPass.addEventListener('keydown', (e) => {
+    if (e.getModifierState) {
+        const capsOn = e.getModifierState('CapsLock');
+        capsWarning.classList.toggle('visible', capsOn);
+    }
+});
+
+adminPass.addEventListener('blur', () => {
+    capsWarning.classList.remove('visible');
+});
+
+/* ============================================
+   FORM SUBMISSION
+   ============================================ */
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    let isValid = true;
+
+    /* Clear previous errors */
+    clearError('adminEmail', 'err-adminEmail');
+    clearError('adminPass', 'err-adminPass');
+
+    /* Validate email */
+    const email = adminEmail.value.trim();
+    if (!email || !isValidEmail(email)) {
+        showError('adminEmail', 'err-adminEmail');
+        isValid = false;
+    }
+
+    /* Validate password */
+    const password = adminPass.value;
+    if (!password) {
+        showError('adminPass', 'err-adminPass');
+        isValid = false;
+    }
+
+    if (!isValid) {
+        showToast('Please fill in all required fields');
+        return;
+    }
+
+    /* Check if the email is an approved admin */
+    if (!isApprovedAdmin(email)) {
+        showToast('Access denied. This email is not registered as an approved administrator.');
+        adminEmail.classList.add('error');
+        return;
+    }
+
+    /* Show loading state */
+    loginBtn.classList.add('loading');
+    loginBtn.disabled = true;
+
+    /* Simulate authentication delay */
+    setTimeout(() => {
+        /* In production, password validation MUST happen server-side.
+           This client-side demo only checks that a password was entered. */
+        if (password.length < 6) {
+            loginBtn.classList.remove('loading');
+            loginBtn.disabled = false;
+            showToast('Invalid credentials. Access denied.');
+            adminPass.value = '';
+            adminPass.focus();
+            shakeCard();
+            return;
+        }
+
+        /* Success */
+        showToast('Authentication successful. Redirecting...', true);
+
+        try {
+            if (document.getElementById('rememberMe').checked) {
+                localStorage.setItem('ttk_admin_session', 'active');
+            } else {
+                sessionStorage.setItem('ttk_admin_session', 'active');
+            }
+            localStorage.setItem('ttk_admin_email', email.toLowerCase());
+        } catch (err) {
+            console.warn('Storage unavailable:', err);
+        }
+
+        setTimeout(() => {
+            window.location.href = 'admin-dashboard.html';
+        }, 1200);
+
+    }, 1200);
+});
+
+/* ============================================
+   GOOGLE SIGN-IN (demo flow)
+   ============================================ */
+googleBtn.addEventListener('click', () => {
+    showToast('Redirecting to Google sign-in...');
+
+    /* In production, integrate Google Identity Services (GIS) here.
+       This is a simulated flow for demonstration purposes. */
+    setTimeout(() => {
+        const simulatedEmail = prompt(
+            'Demo Google Sign-In\n\nEnter the Google account email you want to sign in with:',
+            'admin@ttktechfest.com'
+        );
+
+        if (!simulatedEmail) {
+            showToast('Google sign-in cancelled.');
+            return;
+        }
+
+        const cleanEmail = simulatedEmail.toLowerCase().trim();
+
+        if (!isValidEmail(cleanEmail)) {
+            showToast('Invalid email address.');
+            return;
+        }
+
+        if (!isApprovedAdmin(cleanEmail)) {
+            showToast('Access denied. This Google account is not pre-approved as an administrator.');
+            return;
+        }
+
+        showToast('Google authentication successful. Redirecting...', true);
+
+        try {
+            localStorage.setItem('ttk_admin_session', 'active');
+            localStorage.setItem('ttk_admin_email', cleanEmail);
+            localStorage.setItem('ttk_admin_method', 'google');
+        } catch (err) {
+            console.warn('Storage unavailable:', err);
+        }
+
+        setTimeout(() => {
+            window.location.href = 'admin-dashboard.html';
+        }, 1200);
+
+    }, 800);
+});
+
+/* ============================================
+   SHAKE ANIMATION HELPER
+   ============================================ */
+function shakeCard() {
+    const card = document.querySelector('.login-card');
+    card.style.animation = 'none';
+    card.offsetHeight;
+    card.style.animation = 'shake .4s ease';
+}
+
+/* Inject shake keyframes */
+const shakeStyle = document.createElement('style');
+shakeStyle.textContent = `
+    @keyframes shake {
+        0%,100% { transform:translateX(0); }
+        20% { transform:translateX(-10px); }
+        40% { transform:translateX(10px); }
+        60% { transform:translateX(-6px); }
+        80% { transform:translateX(6px); }
+    }
+`;
+document.head.appendChild(shakeStyle);
+
+/* ============================================
+   AUTO-FOCUS EMAIL ON LOAD
+   ============================================ */
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        adminEmail.focus();
+    }, 500);
+});
+
+</script>
+
+</body>
+</html>
