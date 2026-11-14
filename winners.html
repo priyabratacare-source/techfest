@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Winners | TTK TECHFEST 2026</title>
+<meta name="description" content="Event-wise champions of TTK TechFest 2025. View the winners for Robotics, Coding Arena, Esports, Project Expo, Digital Design, and Workshops.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --black:#05070d;
+    --dark:#080d17;
+    --blue:#1677ff;
+    --cyan:#00d9ff;
+    --white:#ffffff;
+    --grey:#a3adbd;
+    --codebihin:#ff6b35;
+    --card-bg:#0c1524;
+    --gold:#ffd700;
+    --silver:#c0c0c0;
+    --bronze:#cd7f32;
+}
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html {
+    scroll-behavior:smooth;
+}
+
+body {
+    background:var(--black);
+    color:var(--white);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+}
+
+a {
+    color:inherit;
+    text-decoration:none;
+}
+
+/* NAVBAR */
+
+.navbar {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:70px;
+    padding:0 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    z-index:1000;
+    background:rgba(5,7,13,.94);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.brand {
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.brand-mark {
+    width:40px;
+    height:40px;
+    border:1px solid var(--cyan);
+    display:grid;
+    place-items:center;
+    font-family:'Orbitron';
+    font-size:20px;
+    font-weight:900;
+    color:var(--cyan);
+    transform:skew(-8deg);
+}
+
+.brand-text {
+    font-family:'Orbitron';
+    font-size:16px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.brand-text span {
+    color:var(--cyan);
+}
+
+.nav-links {
+    display:flex;
+    align-items:center;
+    gap:26px;
+}
+
+.nav-links a {
+    color:#d2d9e5;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-weight:600;
+    transition:.3s;
+    position:relative;
+}
+
+.nav-links a::after {
+    content:'';
+    position:absolute;
+    bottom:-6px;
+    left:0;
+    width:0;
+    height:2px;
+    background:var(--cyan);
+    transition:.3s;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width:100%;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color:var(--cyan);
+}
+
+.nav-register {
+    padding:10px 18px;
+    border:1px solid var(--cyan);
+    color:var(--cyan)!important;
+}
+
+.nav-register::after { display:none; }
+
+.nav-register:hover {
+    background:rgba(0,217,255,.1);
+    box-shadow:0 0 15px rgba(0,217,255,.2);
+}
+
+.menu-toggle {
+    display:none;
+    border:0;
+    color:white;
+    background:none;
+    font-size:27px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.winners-hero {
+    padding:150px 9% 80px;
+    text-align:center;
+    background:
+    linear-gradient(rgba(3,8,17,.94),rgba(3,8,17,.97)),
+    url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2200&q=85") center/cover;
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid #15273c;
+}
+
+.winners-hero::before {
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:
+    linear-gradient(rgba(255,215,0,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,215,0,.03) 1px,transparent 1px);
+    background-size:55px 55px;
+    mask-image:linear-gradient(to bottom,black,transparent);
+}
+
+.winners-hero::after {
+    content:'';
+    position:absolute;
+    width:600px;
+    height:600px;
+    border:1px solid rgba(255,215,0,.08);
+    border-radius:50%;
+    left:50%;
+    top:-200px;
+    transform:translateX(-50%);
+    animation:rotateRing 30s linear infinite;
+}
+
+@keyframes rotateRing {
+    from { transform:translateX(-50%) rotate(0deg); }
+    to { transform:translateX(-50%) rotate(360deg); }
+}
+
+.winners-hero-content {
+    position:relative;
+    z-index:2;
+}
+
+.winners-hero .section-tag {
+    color:var(--gold);
+    font-size:10px;
+    letter-spacing:4px;
+    font-weight:800;
+    display:inline-block;
+}
+
+.winners-hero h1 {
+    font-family:'Orbitron';
+    font-size:clamp(38px,7vw,72px);
+    font-weight:900;
+    margin-top:18px;
+    letter-spacing:-2px;
+    line-height:1.05;
+}
+
+.winners-hero h1 span {
+    color:var(--gold);
+    text-shadow:0 0 50px rgba(255,215,0,.35);
+}
+
+.winners-hero p {
+    color:#9aa9bd;
+    font-size:15px;
+    line-height:1.9;
+    max-width:600px;
+    margin:22px auto 0;
+}
+
+/* EVENT NAV */
+
+.event-nav-section {
+    background:#080d17;
+    border-bottom:1px solid #15273c;
+    position:sticky;
+    top:70px;
+    z-index:200;
+    transition:.3s;
+}
+
+.event-nav {
+    display:flex;
+    justify-content:center;
+    gap:0;
+    overflow-x:auto;
+    padding:0 5%;
+    scrollbar-width:none;
+}
+
+.event-nav::-webkit-scrollbar {
+    display:none;
+}
+
+.event-nav-link {
+    padding:20px 26px;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:#7a889c;
+    white-space:nowrap;
+    transition:.3s;
+    border-bottom:2px solid transparent;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-shrink:0;
+}
+
+.event-nav-link .nav-icon {
+    font-size:14px;
+    opacity:.7;
+}
+
+.event-nav-link:hover {
+    color:var(--cyan);
+}
+
+.event-nav-link.active {
+    color:var(--gold);
+    border-bottom-color:var(--gold);
+}
+
+.event-nav-link.active .nav-icon {
+    opacity:1;
+}
+
+/* EVENT SECTIONS */
+
+.event-winners-section {
+    padding:80px 9%;
+    position:relative;
+    scroll-margin-top:140px;
+}
+
+.event-winners-section:nth-child(even) {
+    background:#060a12;
+}
+
+.event-winners-section:nth-child(odd) {
+    background:#080d17;
+}
+
+.event-section-header {
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:30px;
+    margin-bottom:50px;
+    flex-wrap:wrap;
+    padding-bottom:24px;
+    border-bottom:1px solid #15273c;
+}
+
+.event-header-left {
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.event-header-number {
+    font-family:'Orbitron';
+    font-size:48px;
+    font-weight:900;
+    color:transparent;
+    -webkit-text-stroke:1px rgba(0,217,255,.3);
+    line-height:1;
+    flex-shrink:0;
+}
+
+.event-header-text .event-header-tag {
+    color:var(--cyan);
+    font-size:9px;
+    letter-spacing:3px;
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+.event-header-text h2 {
+    font-family:'Orbitron';
+    font-size:clamp(22px,3.5vw,34px);
+    font-weight:800;
+    margin-top:8px;
+    letter-spacing:-.5px;
+}
+
+.event-header-meta {
+    display:flex;
+    gap:24px;
+    flex-wrap:wrap;
+}
+
+.event-header-meta .meta-block {
+    text-align:right;
+}
+
+.event-header-meta .meta-label {
+    font-size:9px;
+    color:#5a6a80;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    display:block;
+    margin-bottom:4px;
+}
+
+.event-header-meta .meta-value {
+    font-family:'Orbitron';
+    font-size:14px;
+    font-weight:700;
+    color:var(--gold);
+}
+
+/* CHAMPION CARD */
+
+.champion-card {
+    background:linear-gradient(135deg,#121e30,#0c1524);
+    border:1px solid rgba(255,215,0,.35);
+    padding:45px 40px;
+    margin-bottom:24px;
+    position:relative;
+    overflow:hidden;
+    transition:.4s;
+}
+
+.champion-card::before {
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+
+.champion-card::after {
+    content:'';
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(255,215,0,.1),transparent 70%);
+    top:-100px;
+    right:-80px;
+    pointer-events:none;
+}
+
+.champion-card:hover {
+    border-color:rgba(255,215,0,.55);
+    box-shadow:0 20px 60px rgba(255,215,0,.08);
+}
+
+.champion-layout {
+    display:flex;
+    align-items:center;
+    gap:40px;
+    position:relative;
+    z-index:2;
+    flex-wrap:wrap;
+}
+
+.champion-medal-block {
+    text-align:center;
+    flex-shrink:0;
+}
+
+.champion-medal {
+    font-size:64px;
+    display:block;
+    animation:medalFloat 3s ease-in-out infinite;
+    filter:drop-shadow(0 0 20px rgba(255,215,0,.4));
+}
+
+@keyframes medalFloat {
+    0%,100% { transform:translateY(0); }
+    50% { transform:translateY(-8px); }
+}
+
+.champion-medal-block .rank-text {
+    font-family:'Orbitron';
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:3px;
+    color:var(--gold);
+    margin-top:10px;
+    text-transform:uppercase;
+}
+
+.champion-info {
+    flex:1;
+    min-width:250px;
+}
+
+.champion-info .champion-label {
+    font-size:9px;
+    letter-spacing:3px;
+    color:var(--gold);
+    font-weight:800;
+    text-transform:uppercase;
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.champion-info .champion-label::before {
+    content:'';
+    width:24px;
+    height:1px;
+    background:var(--gold);
+}
+
+.champion-info h3 {
+    font-family:'Orbitron';
+    font-size:clamp(22px,4vw,32px);
+    font-weight:900;
+    letter-spacing:-.5px;
+    margin-bottom:8px;
+    color:#fff;
+}
+
+.champion-info .champion-college {
+    color:#9aa9bd;
+    font-size:13px;
+    margin-bottom:18px;
+    letter-spacing:.3px;
+}
+
+.champion-members {
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.champion-members .member-chip {
+    padding:6px 14px;
+    background:rgba(255,255,255,.04);
+    border:1px solid #2a3a4f;
+    font-size:11px;
+    color:#c0cad9;
+    letter-spacing:.3px;
+    border-radius:2px;
+    transition:.3s;
+}
+
+.champion-card:hover .champion-members .member-chip {
+    border-color:rgba(255,215,0,.2);
+}
+
+.champion-prize-block {
+    text-align:center;
+    flex-shrink:0;
+    padding-left:40px;
+    border-left:1px solid rgba(255,215,0,.15);
+}
+
+.champion-prize-block .prize-label {
+    font-size:9px;
+    color:#5a6a80;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:8px;
+    display:block;
+}
+
+.champion-prize-block .prize-amount {
+    font-family:'Orbitron';
+    font-size:32px;
+    font-weight:900;
+    color:var(--gold);
+    line-height:1;
+    text-shadow:0 0 30px rgba(255,215,0,.2);
+}
+
+.champion-prize-block .prize-cert {
+    font-size:9px;
+    color:#7a889c;
+    letter-spacing:1px;
+    margin-top:8px;
+    display:block;
+}
+
+/* RUNNER UPS */
+
+.runner-ups {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.runner-card {
+    background:var(--card-bg);
+    border:1px solid #1c2a3b;
+    padding:30px 28px;
+    transition:.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.runner-card:hover {
+    transform:translateY(-4px);
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+
+.runner-card.second {
+    border-left:3px solid var(--silver);
+}
+
+.runner-card.third {
+    border-left:3px solid var(--bronze);
+}
+
+.runner-card.second:hover {
+    border-color:rgba(192,192,192,.4);
+    border-left-color:var(--silver);
+}
+
+.runner-card.third:hover {
+    border-color:rgba(205,127,50,.4);
+    border-left-color:var(--bronze);
+}
+
+.runner-top {
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:16px;
+}
+
+.runner-medal {
+    font-size:28px;
+    flex-shrink:0;
+}
+
+.runner-rank-info .runner-rank {
+    font-family:'Orbitron';
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    display:block;
+    margin-bottom:3px;
+}
+
+.runner-card.second .runner-rank { color:var(--silver); }
+.runner-card.third .runner-rank { color:var(--bronze); }
+
+.runner-rank-info .runner-prize {
+    font-family:'Orbitron';
+    font-size:15px;
+    font-weight:900;
+}
+
+.runner-card.second .runner-prize { color:var(--silver); }
+.runner-card.third .runner-prize { color:var(--bronze); }
+
+.runner-card h4 {
+    font-family:'Orbitron';
+    font-size:17px;
+    font-weight:700;
+    margin-bottom:6px;
+    letter-spacing:-.2px;
+}
+
+.runner-college {
+    color:#7a889c;
+    font-size:11.5px;
+    line-height:1.6;
+    margin-bottom:16px;
+}
+
+.runner-members {
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    padding-top:14px;
+    border-top:1px solid #162233;
+}
+
+.runner-members .member-chip {
+    padding:4px 10px;
+    background:rgba(255,255,255,.03);
+    border:1px solid #1c2a3b;
+    font-size:10px;
+    color:#9aa9bd;
+    letter-spacing:.3px;
+    border-radius:2px;
+}
+
+/* STATS */
+
+.winner-stats {
+    padding:90px 9%;
+    background:#05070d;
+    text-align:center;
+}
+
+.winner-stats .section-tag {
+    color:var(--gold);
+    font-size:10px;
+    letter-spacing:4px;
+    font-weight:800;
+}
+
+.winner-stats h2 {
+    font-family:'Orbitron';
+    font-size:clamp(24px,4vw,38px);
+    font-weight:800;
+    margin-top:14px;
+    line-height:1.25;
+}
+
+.stats-grid {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-top:50px;
+}
+
+.stat-card {
+    background:var(--card-bg);
+    border:1px solid #1c2a3b;
+    padding:36px 20px;
+    transition:.4s;
+}
+
+.stat-card:hover {
+    border-color:rgba(255,215,0,.3);
+    transform:translateY(-5px);
+}
+
+.stat-card h3 {
+    font-family:'Orbitron';
+    font-size:38px;
+    font-weight:900;
+    color:var(--gold);
+    margin-bottom:10px;
+}
+
+.stat-card p {
+    color:#9aa9bd;
+    font-size:11px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.stat-card small {
+    display:block;
+    color:#5a6a80;
+    font-size:10px;
+    margin-top:6px;
+}
+
+/* CTA */
+
+.winners-cta {
+    padding:90px 9%;
+    background:linear-gradient(110deg,#7a5c00,#3d2e00);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.winners-cta::before {
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:
+    linear-gradient(rgba(255,215,0,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,215,0,.04) 1px,transparent 1px);
+    background-size:40px 40px;
+}
+
+.winners-cta h2 {
+    font-family:'Orbitron';
+    font-size:clamp(28px,5vw,50px);
+    font-weight:900;
+    position:relative;
+    line-height:1.2;
+    color:#fff;
+}
+
+.winners-cta p {
+    color:#ffe9a0;
+    margin:20px auto 34px;
+    font-size:14px;
+    max-width:500px;
+    position:relative;
+    line-height:1.8;
+}
+
+.btn-cta {
+    display:inline-block;
+    padding:18px 44px;
+    background:var(--gold);
+    color:#1a1400;
+    font-family:'Orbitron';
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    transition:.3s;
+    position:relative;
+}
+
+.btn-cta:hover {
+    transform:translateY(-4px);
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+/* FOOTER */
+
+footer {
+    padding:60px 9% 25px;
+    background:#03060b;
+}
+
+.footer-grid {
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:45px;
+}
+
+.footer-brand p {
+    color:#8897ac;
+    font-size:12px;
+    line-height:2;
+    max-width:330px;
+    margin-top:18px;
+}
+
+.footer-col h3 {
+    font-size:12px;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.footer-col a {
+    display:block;
+    color:#8e9bad;
+    font-size:12px;
+    margin:13px 0;
+    transition:.3s;
+}
+
+.footer-col a:hover {
+    color:var(--gold);
+    padding-left:5px;
+}
+
+.footer-bottom {
+    border-top:1px solid #182333;
+    padding-top:22px;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    color:#728096;
+    font-size:10px;
+}
+
+/* CODEBIHIN CREDIT */
+
+.codebihin-credit {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(5, 7, 13, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 10px 16px;
+    border-radius: 40px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #c0cad9;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.codebihin-credit:hover {
+    border-color: var(--codebihin);
+    color: #ffffff;
+    background: rgba(10, 15, 25, 0.95);
+    transform: translateY(-2px);
+}
+
+.codebihin-credit span {
+    font-weight: 800;
+    color: var(--codebihin);
+}
+
+.codebihin-credit small {
+    font-size: 9px;
+    opacity: 0.6;
+    font-weight: 400;
+    margin-left: 4px;
+}
+
+/* REVEAL */
+
+.reveal {
+    opacity:0;
+    transform:translateY(30px);
+    transition:opacity .7s ease,transform .7s ease;
+}
+
+.reveal.visible {
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1000px) {
+    .champion-layout {
+        gap:28px;
+    }
+    .champion-prize-block {
+        padding-left:0;
+        border-left:none;
+        text-align:left;
+        width:100%;
+        padding-top:24px;
+        border-top:1px solid rgba(255,215,0,.15);
+    }
+    .runner-ups {
+        grid-template-columns:1fr;
+    }
+    .stats-grid {
+        grid-template-columns:repeat(2,1fr);
+    }
+    .footer-grid {
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:800px) {
+    .navbar {
+        height:65px;
+        padding:0 5%;
+    }
+
+    .menu-toggle {
+        display:block;
+    }
+
+    .nav-links {
+        position:absolute;
+        top:65px;
+        left:0;
+        width:100%;
+        background:#070c16;
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+        padding:12px 6%;
+        border-bottom:1px solid #20334c;
+    }
+
+    .nav-links.active {
+        display:flex;
+    }
+
+    .nav-links a {
+        padding:15px 0;
+        border-bottom:1px solid #1a2636;
+    }
+
+    .nav-links a::after { display:none; }
+
+    .nav-register { border:0; }
+
+    .winners-hero {
+        padding:110px 6% 60px;
+    }
+
+    .event-nav-section {
+        top:65px;
+    }
+
+    .event-nav {
+        justify-content:flex-start;
+        padding:0 4%;
+    }
+
+    .event-nav-link {
+        padding:16px 18px;
+        font-size:9px;
+    }
+
+    .event-winners-section {
+        padding:60px 6%;
+        scroll-margin-top:120px;
+    }
+
+    .event-section-header {
+        margin-bottom:36px;
+    }
+
+    .event-header-number {
+        font-size:36px;
+    }
+
+    .event-header-meta {
+        width:100%;
+        gap:20px;
+    }
+
+    .event-header-meta .meta-block {
+        text-align:left;
+    }
+
+    .champion-card {
+        padding:32px 24px;
+    }
+
+    .champion-medal {
+        font-size:50px;
+    }
+
+    .champion-layout {
+        gap:20px;
+    }
+
+    .champion-prize-block .prize-amount {
+        font-size:26px;
+    }
+
+    .runner-card {
+        padding:24px 22px;
+    }
+
+    .winner-stats {
+        padding:70px 6%;
+    }
+
+    .stats-grid {
+        grid-template-columns:1fr 1fr;
+        gap:14px;
+    }
+
+    .stat-card {
+        padding:28px 16px;
+    }
+
+    .stat-card h3 {
+        font-size:30px;
+    }
+
+    .winners-cta {
+        padding:70px 6%;
+    }
+
+    .footer-grid {
+        grid-template-columns:1fr 1fr;
+        gap:30px 15px;
+    }
+
+    .footer-bottom {
+        flex-direction:column;
+        line-height:1.8;
+    }
+
+    .codebihin-credit {
+        bottom: 16px;
+        right: 16px;
+        padding: 8px 12px;
+        font-size: 10px;
+    }
+}
+
+@media(max-width:400px) {
+    .brand-text {
+        font-size:13px;
+    }
+    .stats-grid {
+        grid-template-columns:1fr;
+    }
+    .footer-grid {
+        grid-template-columns:1fr;
+    }
+    .champion-card {
+        padding:26px 18px;
+    }
+    .runner-card {
+        padding:20px 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <a href="index.html" class="brand">
+        <div class="brand-mark">T</div>
+        <div class="brand-text">TTK<span>TECHFEST</span></div>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+
+    <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="events.html">Events</a>
+        <a href="index.html#timetable">Timetable</a>
+        <a href="winners.html" class="active">Winners</a>
+        <a href="register.html" class="nav-register">REGISTER ↗</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header class="winners-hero">
+    <div class="winners-hero-content">
+        <span class="section-tag">HALL OF FAME</span>
+        <h1>EVENT-WISE <span>CHAMPIONS</span>.</h1>
+        <p>Meet the winners of TTK TechFest 2025 — event by event. The brilliant minds who pushed boundaries, broke limits, and set new benchmarks.</p>
+    </div>
+</header>
+
+<!-- EVENT NAV -->
+<div class="event-nav-section" id="eventNavSection">
+    <div class="event-nav">
+        <a href="#robotics" class="event-nav-link active" data-section="robotics">
+            <span class="nav-icon">🤖</span> Robotics
+        </a>
+        <a href="#coding" class="event-nav-link" data-section="coding">
+            <span class="nav-icon">💻</span> Coding Arena
+        </a>
+        <a href="#esports" class="event-nav-link" data-section="esports">
+            <span class="nav-icon">🎮</span> Esports
+        </a>
+        <a href="#expo" class="event-nav-link" data-section="expo">
+            <span class="nav-icon">🚀</span> Project Expo
+        </a>
+        <a href="#design" class="event-nav-link" data-section="design">
+            <span class="nav-icon">🎨</span> Digital Design
+        </a>
+        <a href="#workshops" class="event-nav-link" data-section="workshops">
+            <span class="nav-icon">🛠️</span> Workshops
+        </a>
+    </div>
+</div>
+
+<!-- ============================================
+     01 — ROBOTICS
+     ============================================ -->
+<section class="event-winners-section" id="robotics">
+    <div class="event-section-header reveal">
+        <div class="event-header-left">
+            <div class="event-header-number">01</div>
+            <div class="event-header-text">
+                <span class="event-header-tag">Engineering</span>
+                <h2>ROBOTICS CHALLENGE</h2>
+            </div>
+        </div>
+        <div class="event-header-meta">
+            <div class="meta-block">
+                <span class="meta-label">Prize Pool</span>
+                <span class="meta-value">₹50,000</span>
+            </div>
+            <div class="meta-block">
+                <span class="meta-label">Teams</span>
+                <span class="meta-value">28</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Champion -->
+    <div class="champion-card reveal">
+        <div class="champion-layout">
+            <div class="champion-medal-block">
+                <span class="champion-medal">🥇</span>
+                <div class="rank-text">Champion</div>
+            </div>
+            <div class="champion-info">
+                <div class="champion-label">1st Place</div>
+                <h3>TEAM CYPHER</h3>
+                <div class="champion-college">National Institute of Technology</div>
+                <div class="champion-members">
+                    <span class="member-chip">Arjun Mehta</span>
+                    <span class="member-chip">Priya Nair</span>
+                    <span class="member-chip">Rohan Das</span>
+                    <span class="member-chip">Sneha Rao</span>
+                </div>
+            </div>
+            <div class="champion-prize-block">
+                <span class="prize-label">Prize Money</span>
+                <div class="prize-amount">₹25,000</div>
+                <span class="prize-cert">+ Certificate of Excellence</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Runner-ups -->
+    <div class="runner-ups">
+        <div class="runner-card second reveal">
+            <div class="runner-top">
+                <span class="runner-medal">🥈</span>
+                <div class="runner-rank-info">
+                    <span class="runner-rank">2nd Place</span>
+                    <span class="runner-prize">₹15,000</span>
+                </div>
+            </div>
+            <h4>MECH WARRIORS</h4>
+            <div class="runner-college">Delhi Technological University</div>
+            <div class="runner-members">
+                <span class="member-chip">Karan Malhotra</span>
+                <span class="member-chip">Ananya Singh</span>
+                <span class="member-chip">Vikram Joshi</span>
+            </div>
+        </div>
+
+        <div class="runner-card third reveal">
+            <div class="runner-top">
+                <span class="runner-medal">🥉</span>
+                <div class="runner-rank-info">
+                    <span class="runner-rank">3rd Place</span>
+                    <span class="runner-prize">₹10,000</span>
+                </div>
+            </div>
+            <h4>IRON LEGION</h4>
+            <div class="runner-college">BITS Pilani</div>
+            <div class="runner-members">
+                <span class="member-chip">Aditya Sharma</span>
+                <span class="member-chip">Neha Gupta</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     02 — CODING ARENA
+     ============================================ -->
+<section class="event-winners-section" id="coding">
+    <div class="event-section-header reveal">
+        <div class="event-header-left">
+            <div class="event-header-number">02</div>
+            <div class="event-header-text">
+                <span class="event-header-tag">Technology</span>
+                <h2>CODING ARENA</h2>
+            </div>
+        </div>
+        <div class="event-header-meta">
+            <div class="meta-block">
+                <span class="meta-label">Prize Pool</span>
+                <span class="meta-value">₹30,000</span>
+            </div>
+            <div class="meta-block">
+                <span class="meta-label">Participants</span>
+                <span class="meta-value">120</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="champion-card reveal">
+        <div class="champion-layout">
+            <div class="champion-medal-block">
+                <span class="champion-medal">🥇</span>
+                <div class="rank-text">Champion</div>
+            </div>
+            <div class="champion-info">
+                <div class="champion-label">1st Place</div>
+                <h3>CODE NINJAS</h3>
+                <div class="champion-college">State Engineering College</div>
+                <div class="champion-members">
+                    <span class="member-chip">Ishaan Verma</span>
+                    <span class="member-chip">Tanvi Shah</span>
+                </div>
+            </div>
+            <div class="champion-prize-block">
+                <span class="prize-label">Prize Money</span>
+                <div class="prize-amount">₹15,000</div>
+                <span class="prize-cert">+ Certificate of Excellence</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="runner-ups">
+        <div class="runner-card second reveal">
+            <div class="runner-top">
+                <span class="runner-medal">🥈</span>
+                <div class="runner-rank-info">
+                    <span class="runner-rank">2nd Place</span>
+                    <span class="runner-prize">₹10,000</span>
+                </div>
+            </div>
+            <h4>BYTE BRAWLERS</h4>
+            <div class="runner-college">IIIT Hyderabad</div>
+            <div class="runner-members">
+                <span class="member-chip">Rahul Iyer</span>
+                <span class="member-chip">Meera Reddy</span>
+            </div>
+        </div>
+
+        <div class="runner-card third reveal">
+            <div class="runner-top">
+                <span class="runner-medal">🥉</span>
+                <div class="runner-rank-info">
+                    <span class="runner-rank">3rd Place</span>
+                    <span class="runner-prize">₹5,000</span>
+                </div>
+            </div>
+            <h4>STACK SMASHERS</h4>
+            <div class="runner-college">VIT Vellore</div>
+            <div class="runner-members">
+                <span class="member-chip">Siddharth Rao</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     03 — ESPORTS
+     ============================================ -->
+<section class="event-winners-section" id="esports">
+    <div class="event-section-header reveal">
+        <div class="event-header-left">
+            <div class="event-header-number">03</div>
+            <div class="event-header-text">
+                <span class="event-header-tag">Gaming</span>
+                <h2>ESPORTS TOURNAMENT</h2>
+            </div>
+        </div>
+        <div class="event-header-meta">
+            <div class="meta-block">
+                <span class="meta-label">Prize Pool</span>
+                <span class="meta-value">₹40,000</span>
+            </div>
+            <div class="meta-block">
+                <span class="meta-label">Teams</span>
+                <span class="meta-value">32</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="champion-card reveal">
+        <div class="champion-layout">
+            <div class="champion-medal-block">
+                <span class="champion-medal">🥇</span>
+                <div class="rank-text">Champion</div>
+            </div>
+            <div class="champion-info">
+                <div class="champion-label">1st Place</div>
+                <h3>PHANTOM SQUAD</h3>
+                <div class="champion-college">Amity University</div>
+                <div class="champion-members">
+                    <span class="member-chip">Dev Patel</span>
+                    <span class="member-chip">Aryan Khan</span>
+                    <span class="member-chip">Riya Menon</span>
+                    <span class="member-chip">Sameer Ali</span>
+                </div>
+            </div>
+            <div class="champion-prize-block">
+                <span class="prize-label">Prize Money</span>
+                <div class="prize-amount">₹20,000</div>
+                <span class="prize-cert">+ Certificate of Excellence</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="runner-ups">
+        <div class="runner-card second reveal">
+            <div class="runner-top">
+                <span class="runner-medal">🥈</span>
+                <div class="runner-rank-info">
+                    <span class="runner-rank">2nd Place</span>
+                    <span class="runner-prize">₹12,000</span>
+                </div>
+            </div>
+            <h4>NEXUS GAMING</h4>
+            <div class="runner-college">SRM Institute</div>
+            <div class="runner-members">
+                <span class="member-chip">Kunal Bose</span>
+                <span class="member-chip">Aisha Sheikh</span>
+                <span class="member-chip">Rajat Nair</span>
+            </div>
+        </div>
+
+        <div class="runner-card third reveal">
+            <div class="runner-top">
+                <span class="runner-medal">🥉</span>
+                <div class="runner-rank-info">
+                    <span class="runner-rank">3rd Place</span>
+                    <span class="runner-prize">₹8,000</span>
+                </div>
+            </div>
+            <h4>SHADOW STRIKE</h4>
+            <div class="runner-college">Manipal Institute</div>
+            <div class="runner-members">
+                <span class="member-chip">Nikhil Rao</span>
+                <span class="member-chip">Pooja Iyer</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     04 — PROJECT EXPO
+     ============================================ -->
+<section class="event-winners-section" id="expo">
+    <div class="event-section-header reveal">
+        <div class="event-header-left">
+            <div class="event-header-number">04</div>
+            <div class="event-header-text">
+                <span class="event-header-tag">Innovation</span>
+                <h2>PROJECT EXPO</h2>
+            </div>
+        </div>
+        <div class="event-header-meta">
+            <div class="meta-block">
+                <span class="meta-label">Prize Pool</span>
+                <span class="meta-value">₹38,000</span>
+            </div>
+            <div class="meta-block">
+                <span class="meta-label">Projects</span>
+                <span class="meta-value">45</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="champion-card reveal">
+        <div class="champion-layout">
+            <div class="champion-medal-block">
+                <span class="champion-medal">🥇</span>
+                <div class="rank-text">Champion</div>
+            </div>
+            <div class="champion-info">
+                <div class="champion-label">1st Place</div>
+                <h3>INNOVATE X</h3>
+                <div class="champion-college">IIT Bombay</div>
+                <div class="champion-members">
+                    <span class="member-chip">Aarav Deshmukh</span>
+                    <span class="member-chip">Sanya Kapoor</span>
+                    <span class="member-chip">Rohit Pillai</span>
+                </div>
+            </div>
+            <div class="champion-prize-block">
+                <span class="prize-label">Prize Money</span>
+                <div class="prize-amount">₹18,000</div>
+                <span class="prize-cert">+ Certificate of Excellence</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="runner-ups">
+        <div class="runner-card second reveal">
+            <div class="runner-top">
+                <span class="runner-medal">🥈</span>
+                <div class="runner-rank-info">
+                    <span class="runner-rank">2nd Place</span>
+                    <span class="runner-prize">₹12,000</span>
+                </div>
+            </div>
+            <h4>GREEN GRID</h4>
+            <div class="runner-college">NIT Trichy</div>
+            <div class="runner-members">
+                <span class="member-chip">Lakshmi Narayan</span>
+                <span class="member-chip">Arvind Kumar</span>
+            </div>
+        </div>
+
+        <div class="runner-card third reveal">
+            <div class="runner-top">
+                <span class="runner-medal">🥉</span>
+                <div class="runner-rank-info">
+                    <span class="runner-rank">3rd Place</span>
+                    <span class="runner-prize">₹8,000</span>
+                </div>
+            </div>
+            <h4>SMART SYNC</h4>
+            <div class="runner-college">Anna University</div>
+            <div class="runner-members">
+                <span class="member-chip">Divya Krishnan</span>
+                <span class="member-chip">Suresh Babu</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     05 — DIGITAL DESIGN
+     ============================================ -->
+<section class="event-winners-section" id="design">
+    <div class="event-section-header reveal">
+        <div class="event-header-left">
+            <div class="event-header-number">05</div>
+            <div class="event-header-text">
+                <span class="event-header-tag">Creativity</span>
+                <h2>DIGITAL DESIGN</h2>
+            </div>
+        </div>
+        <div class="event-header-meta">
+            <div class="meta-block">
+                <span class="meta-label">Prize Pool</span>
+                <span class="meta-value">₹22,000</span>
+            </div>
+            <div class="meta-block">
+                <span class="meta-label">Participants</span>
+                <span class="meta-value">65</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="champion-card reveal">
+        <div class="champion-layout">
+            <div class="champion-medal-block">
+                <span class="champion-medal">🥇</span>
+                <div class="rank-text">Champion</div>
+            </div>
+            <div class="champion-info">
+                <div class="champion-label">1st Place</div>
+                <h3>PIXEL FORGE</h3>
+                <div class="champion-college">Institute of Design & Tech</div>
+                <div class="champion-members">
+                    <span class="member-chip">Ananya Bose</span>
+                </div>
+            </div>
+            <div class="champion-prize-block">
+                <span class="prize-label">Prize Money</span>
+                <div class="prize-amount">₹10,000</div>
+                <span class="prize-cert">+ Certificate of Excellence</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="runner-ups">
+        <div class="runner-card second reveal">
+            <div class="runner-top">
+                <span class="runner-medal">🥈</span>
+                <div class="runner-rank-info">
+                    <span class="runner-rank">2nd Place</span>
+                    <span class="runner-prize">₹7,000</span>
+                </div>
+            </div>
+            <h4>CANVAS CREW</h4>
+            <div class="runner-college">NID Ahmedabad</div>
+            <div class="runner-members">
+                <span class="member-chip">Kavya Menon</span>
+            </div>
+        </div>
+
+        <div class="runner-card third reveal">
+            <div class="runner-top">
+                <span class="runner-medal">🥉</span>
+                <div class="runner-rank-info">
+                    <span class="runner-rank">3rd Place</span>
+                    <span class="runner-prize">₹5,000</span>
+                </div>
+            </div>
+            <h4>VISUAL VANGUARD</h4>
+            <div class="runner-college">Symbiosis Institute</div>
+            <div class="runner-members">
+                <span class="member-chip">Ritika Jain</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     06 — WORKSHOPS
+     ============================================ -->
+<section class="event-winners-section" id="workshops">
+    <div class="event-section-header reveal">
+        <div class="event-header-left">
+            <div class="event-header-number">06</div>
+            <div class="event-header-text">
+                <span class="event-header-tag">Learning</span>
+                <h2>WORKSHOPS — BEST PROJECTS</h2>
+            </div>
+        </div>
+        <div class="event-header-meta">
+            <div class="meta-block">
+                <span class="meta-label">Prize Pool</span>
+                <span class="meta-value">₹26,000</span>
+            </div>
+            <div class="meta-block">
+                <span class="meta-label">Projects</span>
+                <span class="meta-value">18</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="champion-card reveal">
+        <div class="champion-layout">
+            <div class="champion-medal-block">
+                <span class="champion-medal">🏆</span>
+                <div class="rank-text">Best Overall</div>
+            </div>
+            <div class="champion-info">
+                <div class="champion-label">AI/ML Workshop — Best Project</div>
+                <h3>DEEP MINDS</h3>
+                <div class="champion-college">IIT Delhi</div>
+                <div class="champion-members">
+                    <span class="member-chip">Ankit Sharma</span>
+                    <span class="member-chip">Pooja Verma</span>
+                </div>
+            </div>
+            <div class="champion-prize-block">
+                <span class="prize-label">Prize Money</span>
+                <div class="prize-amount">₹10,000</div>
+                <span class="prize-cert">+ Certificate of Excellence</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="runner-ups">
+        <div class="runner-card second reveal">
+            <div class="runner-top">
+                <span class="runner-medal">🏆</span>
+                <div class="runner-rank-info">
+                    <span class="runner-rank">IoT Workshop — Best Project</span>
+                    <span class="runner-prize">₹8,000</span>
+                </div>
+            </div>
+            <h4>CONNECTED</h4>
+            <div class="runner-college">BMS College</div>
+            <div class="runner-members">
+                <span class="member-chip">Varun Nayak</span>
+                <span class="member-chip">Shreya Kulkarni</span>
+            </div>
+        </div>
+
+        <div class="runner-card third reveal">
+            <div class="runner-top">
+                <span class="runner-medal">🏆</span>
+                <div class="runner-rank-info">
+                    <span class="runner-rank">Blockchain Workshop — Best Project</span>
+                    <span class="runner-prize">₹8,000</span>
+                </div>
+            </div>
+            <h4>CHAIN REACTION</h4>
+            <div class="runner-college">PES University</div>
+            <div class="runner-members">
+                <span class="member-chip">Gaurav Shetty</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="winner-stats">
+    <span class="section-tag">BY THE NUMBERS</span>
+    <h2>THE IMPACT.</h2>
+
+    <div class="stats-grid">
+        <div class="stat-card reveal">
+            <h3>₹2L+</h3>
+            <p>Total Prize Pool</p>
+            <small>Distributed across all events</small>
+        </div>
+        <div class="stat-card reveal">
+            <h3>48</h3>
+            <p>Winners</p>
+            <small>Across 6 event categories</small>
+        </div>
+        <div class="stat-card reveal">
+            <h3>120+</h3>
+            <p>Colleges</p>
+            <small>Represented by participants</small>
+        </div>
+        <div class="stat-card reveal">
+            <h3>25</h3>
+            <p>Expert Judges</p>
+            <small>Industry professionals & academics</small>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="winners-cta">
+    <h2>YOUR NAME COULD BE HERE.</h2>
+    <p>The next chapter of TTK TechFest is waiting for its champions. Step up, compete, and etch your name in the hall of fame.</p>
+    <a href="register.html" class="btn-cta">REGISTER FOR 2026 ↗</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <a href="index.html" class="brand">
+                <div class="brand-mark">T</div>
+                <div class="brand-text">TTK<span>TECHFEST</span></div>
+            </a>
+            <p>A celebration of technology, creativity and innovation. An opportunity to explore, compete and build the future.</p>
+        </div>
+        <div class="footer-col">
+            <h3>EXPLORE</h3>
+            <a href="index.html#about">About</a>
+            <a href="events.html">Events</a>
+            <a href="index.html#timetable">Timetable</a>
+            <a href="winners.html">Winners</a>
+        </div>
+        <div class="footer-col">
+            <h3>PARTICIPATE</h3>
+            <a href="register.html">Registration</a>
+            <a href="events.html">Competitions</a>
+            <a href="results.html">Results</a>
+            <a href="index.html#faq">FAQ</a>
+        </div>
+        <div class="footer-col">
+            <h3>INFORMATION</h3>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms & Conditions</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© 2026 TTK TECHFEST. ALL RIGHTS RESERVED.</span>
+        <span>DESIGNED FOR THE NEXT GENERATION.</span>
+    </div>
+</footer>
+
+<!-- CODEBIHIN CREDIT -->
+<a href="https://codebihin.in" target="_blank" rel="noopener noreferrer" class="codebihin-credit" aria-label="Made by Codebihin">
+    <span>CODEBIHIN</span>
+    <small>MADE</small>
+</a>
+
+<script>
+
+/* ============================================
+   MOBILE MENU
+   ============================================ */
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+menuToggle.addEventListener('click', () => {
+    const opened = navLinks.classList.toggle('active');
+    menuToggle.textContent = opened ? '✕' : '☰';
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.textContent = '☰';
+    });
+});
+
+/* ============================================
+   EVENT NAV — ACTIVE STATE ON SCROLL
+   ============================================ */
+const eventNavLinks = document.querySelectorAll('.event-nav-link');
+const eventSections = document.querySelectorAll('.event-winners-section');
+
+function updateActiveNav() {
+    let currentSection = 'robotics';
+    const scrollPos = window.scrollY + 200;
+
+    eventSections.forEach(section => {
+        if (section.offsetTop <= scrollPos) {
+            currentSection = section.id;
+        }
+    });
+
+    eventNavLinks.forEach(link => {
+        link.classList.toggle('active', link.dataset.section === currentSection);
+    });
+}
+
+window.addEventListener('scroll', updateActiveNav);
+updateActiveNav();
+
+/* ============================================
+   SMOOTH SCROLL FOR EVENT NAV
+   ============================================ */
+eventNavLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+/* ============================================
+   STICKY EVENT NAV SHADOW
+   ============================================ */
+const eventNavSection = document.getElementById('eventNavSection');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        eventNavSection.style.boxShadow = '0 10px 30px rgba(0,0,0,.3)';
+    } else {
+        eventNavSection.style.boxShadow = 'none';
+    }
+});
+
+/* ============================================
+   REVEAL ON SCROLL
+   ============================================ */
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+</script>
+
+</body>
+</html>
